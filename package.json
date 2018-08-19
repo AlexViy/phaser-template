@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "browser-sync": "^2.24.6",
+    "nodemon": "^1.18.3",
+    "typescript": "^3.0.1"
+  },
+  "scripts": {
+    "start": "yarn browser-sync start -s .",
+    "build": "yarn tsc --project .",
+    "dev": "yarn nodemon -w ./src/App.ts --exec 'yarn build'",
+    "watch": "yarn browser-sync start -s . -w ./bin/*.*"
+  }
+}
