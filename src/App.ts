@@ -5,7 +5,9 @@ class SimpleGame {
 			create: this.create
 		});
 	}
+
 	game: Phaser.Game;
+
 	preload() {
 		this.game.load.image('background', './assets/background.jpg');
 		this.game.load.image('lemon', './assets/S1.jpg');
@@ -14,26 +16,20 @@ class SimpleGame {
 		this.game.load.image('orange', './assets/S4.jpg');
 		this.game.load.image('plum', './assets/S5.jpg');
 	}
+
 	create() {
 		const background = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'background');
-		background.anchor.setTo(0.5, 0.5);
-	}
-}
-
-window.onload = () => {
-	const game = new SimpleGame();
-	window.onload = function () {
-
-		const iconSize = 30;
-		const interval = 40;
+		let interval = 40;
 		let yCoord = 50;
-		for (let i = 0;
 
-			i < 15; i++) {
+		background.anchor.setTo(0.5, 0.5);
+
+		for (let i = 0; i < 15; i++) {
 			let xCoord = 50;
 			for (let j = 0; j < 15; j++) {
-				const randomNumb = +(Math.random() * 4).toFixed();
+				let randomNumb = +(Math.random() * 4).toFixed();
 				let img;
+
 				switch (randomNumb) {
 					case 0:
 						img = 'lemon';
@@ -51,11 +47,14 @@ window.onload = () => {
 						img = 'plum';
 						break;
 				}
+				img = this.game.add.sprite(xCoord, yCoord, img);
 				xCoord += interval;
 			}
 			yCoord += interval;
 		}
-	};
+	}
 }
 
-;
+window.onload = () => {
+	const game = new SimpleGame();
+}
